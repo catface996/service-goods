@@ -14,7 +14,7 @@ spring:
         group: goods
 
 server:
-  port: 7701
+  port: 7005
   shutdown: graceful
 
 http:
