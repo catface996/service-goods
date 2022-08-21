@@ -46,14 +46,19 @@ public class CategoryController {
   @PostMapping(value = "/public/category/getPrivate")
   public JsonResult<List<CategoryResponse>> getPrivate(
       @RequestBody @Valid GetPrivateCategoryRequest request) {
-    return JsonResult.success();
+    List<Category> list = categoryService.queryPrivate(request.getParentId(),
+        request.getCtxClientId());
+    List<CategoryResponse> responses = CategoryWebConvert.convert(list);
+    return JsonResult.success(responses);
   }
 
   @ApiOperation(value = "查询公共类目")
   @PostMapping(value = "/anonymous/category/getPublic")
   public JsonResult<List<CategoryResponse>> getPublic(
       @RequestBody @Valid GetPublicCategoryRequest request) {
-    return JsonResult.success();
+    List<Category> list = categoryService.queryPublic(request.getParentId());
+    List<CategoryResponse> responses = CategoryWebConvert.convert(list);
+    return JsonResult.success(responses);
   }
 
   @ApiOperation(value = "删除私有类目")
