@@ -24,4 +24,11 @@ public interface CategoryRpService extends IService<Category> {
    * @return 子类目列表
    */
   List<Category> queryList(VisibilityEnum visibility, Long clientId, Long parentId);
+
+  /**
+   * 检查是否有子类目
+   * @param parentId 父级类目ID
+   * @return true:有子类目;false:无子类目;
+   */
+  boolean existChildren(Long parentId);
 }

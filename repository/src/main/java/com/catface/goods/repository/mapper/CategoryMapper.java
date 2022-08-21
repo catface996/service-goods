@@ -26,4 +26,11 @@ public interface CategoryMapper extends BaseMapper<Category> {
    */
   List<Category> selectChildren(@Param("visibility") VisibilityEnum visibility,
       @Param("clientId") Long clientId, @Param("parentId") Long parentId);
+
+  /**
+   * 查询一个子类目
+   * @param parentId 父级类目ID
+   * @return 第一个子类目
+   */
+  Category selectOneChild(@Param("parentId") Long parentId);
 }

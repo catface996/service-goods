@@ -65,7 +65,8 @@ public class CategoryController {
   @PostMapping(value = "/public/category/deletePrivate")
   public JsonResult<Boolean> deletePrivate(
       @RequestBody @Valid DeletePrivateCategoryRequest request) {
-    return JsonResult.success();
+    categoryService.delete(request.getCategoryId(), request.getCtxClientId());
+    return JsonResult.success(true);
   }
 
 }

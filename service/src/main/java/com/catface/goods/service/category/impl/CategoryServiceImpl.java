@@ -69,6 +69,24 @@ public class CategoryServiceImpl implements CategoryService {
   @Override
   public void delete(Long categoryId, Long clientId) {
 
+    // 检查是否是有效的类目
+    Category entity = categoryRpService.getById(categoryId);
+    if (entity == null) {
+      log.warn("待删除的类目不存在,类目ID:{}", categoryId);
+      return;
+    }
+    // 禁止删除公共类目
+    Assert.state(entity.getVisibility().equals(VisibilityEnum.PRIVATE),"禁止删除非私有类目");
+
+    // 禁止删除其他客户的类目
+    Assert.state(entity.getClientId().equals(clientId),"禁止删除其他客户的类目");
+
+    // 禁止删除有子类目的类目
+    boolean hasChildren = categoryRpService.existChildren(entity.getId());
+    Assert.state(!hasChildren,"删除子类目后,再删除当前类目");
+
+    // 执行删除类目逻辑
+    categoryRpService.removeById(entity.getId());
   }
 
   /**

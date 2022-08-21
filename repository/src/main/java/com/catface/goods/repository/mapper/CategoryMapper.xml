@@ -23,4 +23,11 @@
     </if>
   </select>
 
+  <!-- 查询一个子类目 -->
+  <select id="selectOneChild" resultType="com.catface.goods.repository.entity.Category">
+    select
+    <include refid="Base_Column_List"/>
+    from category where parent_id = #{parentId} limit 0,1
+  </select>
+
 </mapper>
