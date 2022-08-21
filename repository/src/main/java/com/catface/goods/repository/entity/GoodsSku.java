@@ -16,7 +16,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author catface
- * @since 2022-08-20
+ * @since 2022-08-21
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -37,6 +37,9 @@ public class GoodsSku implements Serializable {
 
     @ApiModelProperty(value = "sku名称")
     private String skuName;
+
+    @ApiModelProperty(value = "图片，json数组")
+    private String images;
 
     @ApiModelProperty(value = "所属客户")
     private Long clientId;

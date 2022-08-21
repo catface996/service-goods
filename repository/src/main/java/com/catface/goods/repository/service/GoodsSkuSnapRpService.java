@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author catface
- * @since 2022-08-20
+ * @since 2022-08-21
  */
 public interface GoodsSkuSnapRpService extends IService<GoodsSkuSnap> {
 

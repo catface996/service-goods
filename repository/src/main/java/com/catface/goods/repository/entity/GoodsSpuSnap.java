@@ -16,7 +16,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author catface
- * @since 2022-08-20
+ * @since 2022-08-21
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -31,6 +31,9 @@ public class GoodsSpuSnap implements Serializable {
 
     @ApiModelProperty(value = "spu名称")
     private String spuName;
+
+    @ApiModelProperty(value = "图片，json数组")
+    private String images;
 
     @ApiModelProperty(value = "商品类目ID")
     private Long categoryId;

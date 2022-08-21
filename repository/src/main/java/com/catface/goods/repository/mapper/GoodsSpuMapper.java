@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author catface
- * @since 2022-08-20
+ * @since 2022-08-21
  */
 public interface GoodsSpuMapper extends BaseMapper<GoodsSpu> {
 

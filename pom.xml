@@ -83,6 +83,11 @@
                 <groupId>com.catface.common</groupId>
                 <version>1.0.2-SNAPSHOT</version>
             </dependency>
+            <dependency>
+                <artifactId>api</artifactId>
+                <groupId>com.catface.rss</groupId>
+                <version>0.0.3-SNAPSHOT</version>
+            </dependency>
             <!-- 二方包依赖 end-->
 
             <!-- mysql 及 mybatis begin-->

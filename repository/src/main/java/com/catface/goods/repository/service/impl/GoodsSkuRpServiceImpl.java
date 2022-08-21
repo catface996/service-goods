@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author catface
- * @since 2022-08-20
+ * @since 2022-08-21
  */
 @Service
 public class GoodsSkuRpServiceImpl extends ServiceImpl<GoodsSkuMapper, GoodsSku> implements GoodsSkuRpService {
