@@ -39,7 +39,7 @@ public class CategoryController {
     }
 
     @ApiOperation(value = "查询公共类目")
-    @PostMapping(value = "/public/category/getPublic")
+    @PostMapping(value = "/anonymous/category/getPublic")
     public JsonResult<List<CategoryResponse>> getPublic(@RequestBody @Valid GetPublicCategoryRequest request) {
         return JsonResult.success();
     }
