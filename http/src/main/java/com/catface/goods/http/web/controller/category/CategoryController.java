@@ -2,20 +2,22 @@ package com.catface.goods.http.web.controller.category;
 
 import com.catface.common.model.JsonResult;
 import com.catface.goods.http.config.swagger.SwaggerTagConst;
+import com.catface.goods.http.web.controller.category.convert.CategoryWebConvert;
 import com.catface.goods.http.web.controller.category.request.DeletePrivateCategoryRequest;
 import com.catface.goods.http.web.controller.category.request.GetPrivateCategoryRequest;
 import com.catface.goods.http.web.controller.category.request.GetPublicCategoryRequest;
 import com.catface.goods.http.web.controller.category.request.SaveCategoryRequest;
 import com.catface.goods.http.web.controller.category.response.CategoryResponse;
+import com.catface.goods.repository.entity.Category;
+import com.catface.goods.service.category.CategoryService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import java.util.List;
+import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.validation.Valid;
-import java.util.List;
 
 /**
  * @author catface
@@ -26,28 +28,39 @@ import java.util.List;
 @RestController
 public class CategoryController {
 
-    @ApiOperation(value = "保存类目")
-    @PostMapping(value = "/public/category/save")
-    public JsonResult<Boolean> save(@RequestBody @Valid SaveCategoryRequest request) {
-        return JsonResult.success();
-    }
+  private final CategoryService categoryService;
 
-    @ApiOperation(value = "查询私有类目")
-    @PostMapping(value = "/public/category/getPrivate")
-    public JsonResult<List<CategoryResponse>> getPrivate(@RequestBody @Valid GetPrivateCategoryRequest request) {
-        return JsonResult.success();
-    }
+  public CategoryController(CategoryService categoryService) {
+    this.categoryService = categoryService;
+  }
 
-    @ApiOperation(value = "查询公共类目")
-    @PostMapping(value = "/anonymous/category/getPublic")
-    public JsonResult<List<CategoryResponse>> getPublic(@RequestBody @Valid GetPublicCategoryRequest request) {
-        return JsonResult.success();
-    }
+  @ApiOperation(value = "保存类目")
+  @PostMapping(value = "/public/category/save")
+  public JsonResult<Boolean> save(@RequestBody @Valid SaveCategoryRequest request) {
+    Category entity = CategoryWebConvert.convert(request);
+    categoryService.save(entity);
+    return JsonResult.success();
+  }
 
-    @ApiOperation(value = "删除私有类目")
-    @PostMapping(value = "/public/category/deletePrivate")
-    public JsonResult<Boolean> deletePrivate(@RequestBody @Valid DeletePrivateCategoryRequest request) {
-        return JsonResult.success();
-    }
+  @ApiOperation(value = "查询私有类目")
+  @PostMapping(value = "/public/category/getPrivate")
+  public JsonResult<List<CategoryResponse>> getPrivate(
+      @RequestBody @Valid GetPrivateCategoryRequest request) {
+    return JsonResult.success();
+  }
+
+  @ApiOperation(value = "查询公共类目")
+  @PostMapping(value = "/anonymous/category/getPublic")
+  public JsonResult<List<CategoryResponse>> getPublic(
+      @RequestBody @Valid GetPublicCategoryRequest request) {
+    return JsonResult.success();
+  }
+
+  @ApiOperation(value = "删除私有类目")
+  @PostMapping(value = "/public/category/deletePrivate")
+  public JsonResult<Boolean> deletePrivate(
+      @RequestBody @Valid DeletePrivateCategoryRequest request) {
+    return JsonResult.success();
+  }
 
 }

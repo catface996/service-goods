@@ -33,10 +33,6 @@ public class SaveCategoryRequest {
     @NotNull(message = "类目名称不能为空")
     private String categoryName;
 
-    @ApiModelProperty(value = "类目级别",required = true,example = "2")
-    @NotNull(message = "类目级别不能为空")
-    private Integer level;
-
     @ApiModelProperty(value = "会话中的用户ID",required = true,example = "9876543210")
     @NotNull(message = "用户ID不能为空")
     private Long ctxUserId;
