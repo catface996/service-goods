@@ -4,7 +4,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, parent_id, client_id, category_name, visibility, creator, modifier, created, updated, remark
+        id, parent_id, client_id, category_name, level, visibility, creator, modifier, created, updated, remark
     </sql>
 
 </mapper>

@@ -6,11 +6,15 @@ package com.catface.goods.http.config.swagger;
  */
 public class SwaggerTagConst {
 
-    private SwaggerTagConst() {}
-
-    public static final String GOODS_MANAGE = "商品管理";
+    private SwaggerTagConst() {
+    }
 
     public static final String SAY_HELLO = "打招呼";
 
+    public static final String CATEGORY = "类目";
+
+    public static final String SPU = "SPU";
+
+    public static final String SKU = "SKU";
 
 }

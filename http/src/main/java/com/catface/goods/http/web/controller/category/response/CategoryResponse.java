@@ -1,33 +1,21 @@
-package com.catface.goods.repository.entity;
-
-import com.baomidou.mybatisplus.annotation.IdType;
-import java.util.Date;
-import com.baomidou.mybatisplus.annotation.TableId;
-import java.io.Serializable;
+package com.catface.goods.http.web.controller.category.response;
 
 import com.catface.common.enums.common.VisibilityEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
+
+import java.util.Date;
 
 /**
- * <p>
- * 商品类目
- * </p>
- *
  * @author catface
- * @since 2022-08-20
+ * @since 2022/8/21
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="Category对象", description="商品类目")
-public class Category implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+@ApiModel(description = "类目模型")
+public class CategoryResponse {
 
     @ApiModelProperty(value = "类目ID")
-    @TableId(value = "id", type = IdType.ASSIGN_ID)
     private Long id;
 
     @ApiModelProperty(value = "父级类目")
@@ -40,7 +28,7 @@ public class Category implements Serializable {
     private String categoryName;
 
     @ApiModelProperty(value = "类目级别")
-    private Integer level;
+    private Long level;
 
     @ApiModelProperty(value = "可见性")
     private VisibilityEnum visibility;
@@ -59,6 +47,4 @@ public class Category implements Serializable {
 
     @ApiModelProperty(value = "备注")
     private String remark;
-
-
 }
